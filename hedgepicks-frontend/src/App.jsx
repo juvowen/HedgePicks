@@ -52,20 +52,35 @@ function App() {
       .finally(() => setCheckingSession(false));
   }, []);
 
-  useEffect(() => {
-    if (!user) return;
-    fetch(`${import.meta.env.VITE_API_URL}/api/mlb/games`)
-      .then((res) => res.json())
-      .then((data) => {
-        const transformed = (data.data || []).map(transformEvent);
-        setGames(transformed);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
-  }, [user]);
+useEffect(() => {
+  if (!user) return;
+
+  const loadGames = async () => {
+    try {
+      setLoading(true);
+
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/mlb/games`
+      );
+
+      if (!res.ok) {
+        throw new Error("Failed to fetch games");
+      }
+
+      const data = await res.json();
+
+      const transformed = (data.data || []).map(transformEvent);
+
+      setGames(transformed);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  loadGames();
+}, [user]);
 
   const filtered = games.filter((g) =>
     `${g.teamA} ${g.teamB}`.toLowerCase().includes(searchTerm.toLowerCase()),
