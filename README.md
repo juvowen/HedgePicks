@@ -16,4 +16,12 @@ A fullstack web app that helps users identify betting hedge opportunities on MLB
 - **Auth:** express session with connect mongo session store, crypto scrypt password hashing
 - **External APIs:** SportsGameOdds (game and odds data), Google Gemini (hedge analysis)
 
+## Database Schema
+**users collection:**
+- name: String
+- email: String (unique)
+- password: String (scrypt hash)
+- salt: String
+
+
 
