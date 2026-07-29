@@ -6,7 +6,7 @@ function HedgeModal({ game, onClose }) {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    fetch('http://localhost:5050/api/hedge/analyze', {
+    fetch(`${import.meta.env.VITE_API_URL}/api/hedge/analyze`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',

@@ -4,7 +4,7 @@ function Header({ searchTerm, onSearchChange, user, onLogout, onAccountDeleted }
   const [confirmDelete, setConfirmDelete] = useState(false)
 
   const handleDelete = async () => {
-    const res = await fetch('http://localhost:5050/api/users/me', {
+    const res =fetch(`${import.meta.env.VITE_API_URL}/api/users/me`, {
       method: 'DELETE',
       credentials: 'include',
     })

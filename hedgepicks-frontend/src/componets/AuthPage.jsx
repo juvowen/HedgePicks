@@ -31,7 +31,7 @@ function AuthPage({ onAuth }) {
         ? { email, password }
         : { name, email, password }
 
-      const res = await fetch(`http://localhost:5050/api/users/${endpoint}`, {
+      const res = fetch(`${import.meta.env.VITE_API_URL}/api/users/${endpoint}`,  {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',

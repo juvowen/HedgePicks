@@ -41,7 +41,8 @@ function App() {
 
   // checking if a session already exists 
   useEffect(() => {
-    fetch("http://localhost:5050/api/users/me", { credentials: "include" })
+    fetch(`${import.meta.env.VITE_API_URL}/api/users/me`, { 
+  credentials: "include"  })
       .then((res) => {
         if (!res.ok) throw new Error("Not logged in");
         return res.json();
@@ -53,7 +54,7 @@ function App() {
 
   useEffect(() => {
     if (!user) return;
-    fetch("http://localhost:5050/api/mlb/games")
+    fetch(`${import.meta.env.VITE_API_URL}/api/mlb/games`)
       .then((res) => res.json())
       .then((data) => {
         const transformed = (data.data || []).map(transformEvent);
@@ -71,7 +72,7 @@ function App() {
   );
 
   const handleLogout = async () => {
-    await fetch("http://localhost:5050/api/users/logout", {
+   await fetch(`${import.meta.env.VITE_API_URL}/api/users/logout`, {
       method: "POST",
       credentials: "include",
     });
