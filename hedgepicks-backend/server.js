@@ -15,20 +15,25 @@ app.use(cors({
     credentials: true
 }));
 app.use(express.json())
+//trying to fix issue with deplying server
 app.set("trust proxy", 1);
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  store: MongoStore.create({ mongoUrl: process.env.ATLAS_URI }),
-  ccookie: {
-  maxAge: 1000 * 60 * 60 * 24 * 7,
-  httpOnly: true,
-  secure: true,
-  sameSite: "none"
-} // up 2 7 days
-}))
+
+  store: MongoStore.create({
+    mongoUrl: process.env.ATLAS_URI
+  }),
+
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24 * 7,
+    httpOnly: true,
+    secure: true,
+    sameSite: "none"
+  }
+}));
 
 ;(async () => {
   try {
