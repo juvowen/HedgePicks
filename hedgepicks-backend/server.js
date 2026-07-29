@@ -21,7 +21,12 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({ mongoUrl: process.env.ATLAS_URI }),
-  cookie: { maxAge: 1000 * 60 * 60 * 24 * 7 } // up 2 7 days
+  ccookie: {
+  maxAge: 1000 * 60 * 60 * 24 * 7,
+  httpOnly: true,
+  secure: true,
+  sameSite: "none"
+} // up 2 7 days
 }))
 
 ;(async () => {
