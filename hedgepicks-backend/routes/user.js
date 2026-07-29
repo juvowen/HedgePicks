@@ -103,7 +103,7 @@ router.put('/me', async (req, res) => {
       return res.status(400).json({ error: 'No fields to update' });
     }
 
-    // If changing email, make sure it's not already taken by someone else
+    // filter
     if (email) {
       const existing = await conn.findOne({ email, _id: { $ne: new ObjectId(req.session.userId) } });
       if (existing) {

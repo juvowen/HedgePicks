@@ -26,7 +26,7 @@ body {
   min-height: 100vh;
 }
 
-/* Header (left panel) */
+/* left header panel */
 .header {
   width: 260px;
   flex-shrink: 0;
@@ -145,7 +145,7 @@ body {
   box-shadow: 0 0 8px #00aaff;
 }
 
-/* Main content */
+/* main page */
 .main {
   flex: 1;
   padding: 2.5rem 3rem;
@@ -237,7 +237,7 @@ body {
   color: #00aaff;
 }
 
-/* Auth page */
+/* signup and login */
 .auth-page {
   min-height: 100vh;
   display: flex;
@@ -331,7 +331,7 @@ body {
   cursor: not-allowed;
 }
 
-/* Modal */
+/* model */
 .modal-overlay {
   position: fixed;
   inset: 0;

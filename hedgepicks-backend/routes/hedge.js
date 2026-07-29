@@ -36,7 +36,7 @@ If Arb = 1.0000 -> Break-even.
 If Arb > 1.0000 -> No arbitrage.
 
 If arbitrage exists:
-Assume a default bankroll of $${stake || 100} on the first selected team (or use a user-provided stake).
+Assume a default bankroll of $${stake || 100} on the first selected team.
 Calculate the first payout: Payout = Stake x Decimal1
 Calculate the hedge stake: HedgeStake = Payout / Decimal2
 Compute: Total amount wagered, Guaranteed payout, Guaranteed profit, ROI (%)

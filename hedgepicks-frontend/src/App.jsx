@@ -39,7 +39,7 @@ function App() {
   const [checkingSession, setCheckingSession] = useState(true);
   const [selectedGame, setSelectedGame] = useState(null);
 
-  // Check if a session already exists (e.g. after a page refresh)
+  // checking if a session already exists 
   useEffect(() => {
     fetch("http://localhost:5050/api/users/me", { credentials: "include" })
       .then((res) => {
@@ -80,7 +80,7 @@ function App() {
   };
 
   if (checkingSession) {
-    return <div className="app-loading">LOADING...</div>;
+    return <div className="app-loading">loading..</div>;
   }
 
   if (!user) {

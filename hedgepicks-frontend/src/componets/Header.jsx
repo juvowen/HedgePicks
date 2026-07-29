@@ -24,11 +24,6 @@ function Header({ searchTerm, onSearchChange, user, onLogout, onAccountDeleted }
         onChange={(e) => onSearchChange(e.target.value)}
       />
 
-      <div className="header-stats">
-        <div className="stat-row"><span>GAMES_TRACKED</span><span>05</span></div>
-        <div className="stat-row"><span>AVG_EDGE</span><span>3.2%</span></div>
-      </div>
-
       <div className="header-account">
         <span className="account-email">{user.email}</span>
         <button className="logout-link" onClick={onLogout}>LOGOUT</button>
